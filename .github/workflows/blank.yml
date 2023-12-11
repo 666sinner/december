@@ -14,3 +14,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - run: docker build -t ghcr.io/666sinner/node-server-alpine:1.0 .
+      - run: docker push ghcr.io/666sinner/node-server-alpine:1.0
+        
