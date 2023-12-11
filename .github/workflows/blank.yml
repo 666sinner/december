@@ -17,4 +17,18 @@ jobs:
       - uses: actions/checkout@v4
       - run: docker build -t ghcr.io/666sinner/node-server-alpine:1.0 .
       - run: docker push ghcr.io/666sinner/node-server-alpine:1.0
+      - name: telegram_success 
+        if: success()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: HELLO_MIR
+      - name: telegram_failure
+        if: failure()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_CHAT_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          args: FAILURE
         
