@@ -15,10 +15,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       - uses: actions/checkout@v4
-      - run: docker build -t ghcr.io/sinner666/node-server-alpine:1.0 node-app
-      - run: docker push ghcr.io/sinner666/node-server-alpine:1.0
-      - run: docker build -t ghcr.io/sinner666/python-server-alpine:1.0 python-app
-      - run: docker push ghcr.io/sinner666/python-server-alpine:1.0
+      - run: docker build -t ghcr.io/${{ github.actor }}/node-server-alpine:1.0 node-app
+      - run: docker push ghcr.io/${{ github.actor }}/node-server-alpine:1.0
+      - run: docker build -t ghcr.io/${{ github.actor }}/python-server-alpine:1.0 python-app
+      - run: docker push ghcr.io/${{ github.actor }}/python-server-alpine:1.0
       - name: telegram_success 
         if: success()
         uses: appleboy/telegram-action@master
